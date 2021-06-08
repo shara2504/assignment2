@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Food List</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <h2>Food Listing</h2>
+        <a class="button" href="addFood">Add new food</a>
+    <table class="data-contacts-js" >
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Desc</th>
+            <th>Price</th> 
+            <th>Stock</th>
+        </tr>
+    </table>
+        <a href="/">Home</a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+
+//        $("#fetchContacts").bind("click", function() {
+
+            $.get("http://localhost:9091/foods", function(data) {
+
+                $.each(data, function(i, food) {
+
+                    $(".data-contacts-js").append(
+                        "<tr><td>" + food.id + "</td>" +
+                        "<td>" + food.name + "</td>" +
+                        "<td>" + food.desc + "</td>" +
+                        "<td>" + food.price + "</td>" +
+                        "<td>" + food.stock + "</td>"
+                        );
+                });
+
+            });
+//         });
+    </script>
+    </body>
+</html>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ffe4c4;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 7px 2px;
+  cursor: pointer;
+}
+.button4 {border-radius: 12px;}
+</style>
