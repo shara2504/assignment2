@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Employees Listing</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h2>Employees</h2>
+            <table class="data-feedbacks-js" >
+        <tr>
+            <th>Id</th>
+            <th>Food</th>
+            <th>Comments</th>
+     
+        </tr>
+    </table>
+        <a href="/">Home</a>
+        </div>
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+
+//        $("#fetchContacts").bind("click", function() {
+
+            $.get("http://localhost:9091/feedbacks", function(data) {
+
+                $.each(data, function(i, f) {
+
+                    $(".data-employees-js").append(
+                        "<tr><td>" + f.id + "</td>" +
+                        "<td>" + f.name + "</td>" +
+                        "<td>" + f.feedbacks + "</td>"                        );
+                });
+
+            });
+//         });
+    </script>
+    </body>
+</html>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ffe4c4;
+}
+</style>
